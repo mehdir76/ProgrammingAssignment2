@@ -48,8 +48,17 @@ cacheSolve <- function(x, ...) {
          first_matrix <- x$get()   
          ## Use solve() to invert the startingmatrix, then save it in last_matrix. 
          last_matrix <- solve(first_matrix)  
-         ## Call nested function x$set_cache_m() in makeCacheMatrix to set m in the cache environment to the local non-NULL inverted result in endingmatrix 
+         ## Call x$set_cache_m() in makeCacheMatrix to set m in the cache environment to the local non-NULL inverted result in endingmatrix 
          x$set_cache_m(last_matrix)   
          ## Return last_matrix if cache_m is not null.  
          last_matrix   
 }
+
+##Tests
+m <- makeCacheMatrix()
+m$set(matrix(c(0,2,2,0),2,2))
+m$get()
+cacheSolve(m)
+cacheSolve(m)
+
+
